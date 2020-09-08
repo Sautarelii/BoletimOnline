@@ -1,0 +1,109 @@
+﻿@using System.Security.Claims;
+@using Boletim.Models;
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit-no">
+    <title>@ViewBag.Title - Boletim Online</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <link rel="stylesheet" type="text/css" href="~/Content/PastaCss/estilo.css">
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+
+                </button>
+               
+                    <figure>
+                        <img class="" src="~/Content/img/BoletimLogo.png" alt"" width="82" height="80" />
+                    </figure>
+                
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+
+                    @{
+                        var Usuario = (ClaimsIdentity)User.Identity;
+                    }
+                    @if (Usuario.IsAuthenticated)
+                    { }
+
+                    @if (Usuario.Claims.Any(
+                     c => c.Type == ClaimTypes.Role
+                     && c.Value == "Administrador"))
+
+                    {
+                        //Administrador
+                        <li>@Html.ActionLink("Administrador", "Index", "Administrador")</li>
+                        <li>@Html.ActionLink("Cadastramentos", "Cadastramentos", "Home")</li>
+                        <li>@Html.ActionLink("Atribuiçãoo", "Index", "PROFMATERIATURMA")</li>
+
+                    }
+
+
+
+                    @if (Usuario.Claims.Any(
+                        c => c.Type == ClaimTypes.Role
+                        && c.Value == "ALUNO"))
+                    {
+                        <li>@Html.ActionLink("Visualizar Nota", "Index", "PROFESSOR")</li>
+                    }
+
+
+
+                    @if (Usuario.Claims.Any(
+                    c => c.Type == ClaimTypes.Role
+                    && c.Value == "Professor"))
+                    {
+                        <li>@Html.ActionLink("Nota", "Index", "Nota")</li>
+
+                    }
+                </ul>
+
+
+
+
+                <ul class="nav navbar-nav navbar-right">
+                    @if (Usuario.IsAuthenticated)
+                    {
+                        <li class="email_usuario">
+                            @Usuario.Claims.Where(
+                            c => c.Type == ClaimTypes.Email
+                            ).FirstOrDefault().Value
+                        </li>
+
+                        <li>@Html.ActionLink("Sair", "LogOut", "Administrador")</li>
+
+                    }
+
+
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+
+
+        <footer>
+
+            <p>&copy; @DateTime.Now.Year - Boletim Online</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

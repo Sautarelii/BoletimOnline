@@ -1,0 +1,37 @@
+﻿@model Boletim.PROFESSOR
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Detalhe</h2>
+
+<div>
+    <h4>PROFESSOR</h4>
+    <hr />
+    <dl class="dl-horizontal">
+
+
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NOME)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NOME)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Usuario.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Usuario.Email)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.COD_PROF }) |
+    @Html.ActionLink("Voltar", "Index")
+</p>
