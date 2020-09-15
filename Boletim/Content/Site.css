@@ -1,5 +1,6 @@
 ﻿body {
-    background-color:#4A6398;
+    background-image: url(img/BannerBoletim.png);
+    background-size:cover;
     padding-top: 60px;
     padding-bottom: 20px;
 }
@@ -52,6 +53,10 @@ body{
     background-color: white;
     border-radius: 25px;
     box-sizing: border-box;
+}
+.navbar-inverse {
+    background-color:black;
+
 }
 
 

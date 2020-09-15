@@ -328,6 +328,7 @@ public class AdministradorController : Controller
                 if (user.Administrador.Count > 0)
                 {
                     perfil = "Administrador";
+           
                 } else if (user.ALUNO.Count > 0)
                 {
                     perfil = "ALUNO";
@@ -336,9 +337,13 @@ public class AdministradorController : Controller
                     perfil = "PROFESSOR";
                 }
 
-                    CriaPerfil(user, perfil);
+                CriaPerfil(user, perfil);
 
-                return RedirectToAction("Cadastramentos", "Home");
+                if (user.Administrador.Count > 0)
+                {
+                    return RedirectToAction("Cadastramentos", "Home");
+                }
+                return RedirectToAction("Index", "Home");
             }
         }
         else

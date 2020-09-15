@@ -141,7 +141,7 @@ public class PROFESSORController : Controller
 
         return View();
     }
-    // GET: Administrador/Create
+    // GET: Professor/Create
     public ActionResult Create()
     {
         ViewBag.UsuarioId = new SelectList(db.Usuario, "UsuarioId", "Email");

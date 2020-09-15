@@ -1,12 +1,12 @@
 ﻿@model Boletim.Models.ProfessorViewModel
 
 @{
-    ViewBag.Title = "CreateProfessor";
+    ViewBag.Title = "EditProfessor";
 }
 
 <h2>EditProfessor</h2>
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm("EditProfessor","PROFESSOR",FormMethod.Post) )
 {
     @Html.AntiForgeryToken()
     
