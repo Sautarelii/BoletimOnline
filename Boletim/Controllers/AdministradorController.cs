@@ -292,9 +292,20 @@ public class AdministradorController : Controller
             authManager.SignOut("ApplicationCookie");
 
             //Loga novamente
-            CriaPerfil(user, "Administrador");
 
-            return RedirectToAction("Cadastramentos", "Home");
+            if (user.Administrador.Count > 0)
+            {
+                return RedirectToAction("Cadastramentos", "Home");
+            }
+            else if (user.ALUNO.Count > 0)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            else if (user.PROFESSOR.Count > 0)
+            {
+                return RedirectToAction("Index", "Home");
+            };
+
         } else
         {
             ModelState.AddModelError("ConfirmarSenha", "A Senha não confere");

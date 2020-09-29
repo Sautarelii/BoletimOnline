@@ -33,9 +33,13 @@
 
                     @{
                         var Usuario = (ClaimsIdentity)User.Identity;
+                        <li>@Html.ActionLink("Quem somos", "Index", "Home")</li>
+
                     }
                     @if (Usuario.IsAuthenticated)
-                    { }
+                    {
+
+                    }
 
                     @if (Usuario.Claims.Any(
                      c => c.Type == ClaimTypes.Role
@@ -45,7 +49,7 @@
                         //Administrador
                         <li>@Html.ActionLink("Administrador", "Index", "Administrador")</li>
                         <li>@Html.ActionLink("Cadastramentos", "Cadastramentos", "Home")</li>
-                        <li>@Html.ActionLink("Atribuiçãoo", "Index", "PROFMATERIATURMA")</li>
+                        <li>@Html.ActionLink("Atribuição", "Index", "PROFMATERIATURMA")</li>
 
                     }
 
@@ -55,6 +59,7 @@
                         c => c.Type == ClaimTypes.Role
                         && c.Value == "ALUNO"))
                     {
+                        <li>@Html.ActionLink("Quem somos", "Index", "Home")</li>
                         <li>@Html.ActionLink("Visualizar Nota", "Index", "PROFESSOR")</li>
                     }
 
@@ -62,10 +67,10 @@
 
                     @if (Usuario.Claims.Any(
                     c => c.Type == ClaimTypes.Role
-                    && c.Value == "Professor"))
+                    && c.Value == "PROFESSOR"))
                     {
-                        <li>@Html.ActionLink("Nota", "Index", "Nota")</li>
-
+                        <li>@Html.ActionLink("Quem somos", "Index", "Home")</li>
+                        <li>@Html.ActionLink("Atribuição", "Index", "PROFMATERIATURMA")</li>
                     }
                 </ul>
 

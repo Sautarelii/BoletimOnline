@@ -67,7 +67,7 @@ public class PROFESSORController : Controller
             }
             else
             {
-                PROFESSOR  professor= new PROFESSOR()
+                PROFESSOR professor = new PROFESSOR()
                 {
                     NOME = professorViewModel.Nome,
                     Usuario = new Usuario()
@@ -93,9 +93,10 @@ public class PROFESSORController : Controller
 
         if (ModelState.IsValid)
         {
-           PROFESSOR professor = db.PROFESSOR.Find(professorViewModel.Professorid);
+            PROFESSOR professor = db.PROFESSOR.Find(professorViewModel.Professorid);
 
             var Usuario = db.Usuario.Where(u => u.Email.ToUpper() == professorViewModel.Email.ToUpper()).FirstOrDefault();
+
             if (Usuario != null && professor.Usuario.UsuarioId != Usuario.UsuarioId)
             {
                 ModelState.AddModelError("email", "E-mail já cadastrado na base");
@@ -130,7 +131,7 @@ public class PROFESSORController : Controller
         ProfessorViewModel professorViewModel = new ProfessorViewModel()
         {
             Professorid = professor.COD_PROF,
-            Email =professor.Usuario.Email,
+            Email = professor.Usuario.Email,
             Nome = professor.NOME
         };
         return View(professorViewModel);
@@ -182,7 +183,8 @@ public class PROFESSORController : Controller
         return View(professor);
     }
 
-    // POST: Administrador/Edit/5
+    /*
+    //POST: Administrador/Edit/5
     // Para se proteger de mais ataques, ative as propriedades específicas a que você quer se conectar. Para 
     // obter mais detalhes, consulte https://go.microsoft.com/fwlink/?LinkId=317598.
     [HttpPost]
@@ -198,6 +200,8 @@ public class PROFESSORController : Controller
         ViewBag.UsuarioId = new SelectList(db.Usuario, "UsuarioId", "Email", professor.UsuarioId);
         return View(professor);
     }
+    
+    */
 
     // GET: Administrador/Delete/5
     public ActionResult Delete(int? id)
@@ -206,7 +210,7 @@ public class PROFESSORController : Controller
         {
             return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
         }
-       PROFESSOR professor = db.PROFESSOR.Find(id);
+        PROFESSOR professor = db.PROFESSOR.Find(id);
         if (professor == null)
         {
             return HttpNotFound();
@@ -255,7 +259,7 @@ public class PROFESSORController : Controller
 }
 
 
-    //[Authorize(Roles = "SenhaTemporaria")]
+//[Authorize(Roles = "SenhaTemporaria")]
 
 
 
