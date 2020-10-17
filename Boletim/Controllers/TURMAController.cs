@@ -12,7 +12,7 @@ namespace Boletim.Controllers
 {
     public class TURMAController : Controller
     {
-        private BoletimOnline2Entities3 db = new BoletimOnline2Entities3();
+        private BoletimOnline2Entities6 db = new BoletimOnline2Entities6();
 
         // GET: TURMA
         public ActionResult Index()

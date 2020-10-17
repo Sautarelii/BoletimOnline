@@ -13,10 +13,10 @@ namespace Boletim
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class BoletimOnline2Entities3 : DbContext
+    public partial class BoletimOnline2Entities6 : DbContext
     {
-        public BoletimOnline2Entities3()
-            : base("name=BoletimOnline2Entities3")
+        public BoletimOnline2Entities6()
+            : base("name=BoletimOnline2Entities6")
         {
         }
     
@@ -27,14 +27,13 @@ namespace Boletim
     
         public virtual DbSet<Administrador> Administrador { get; set; }
         public virtual DbSet<ALUNO> ALUNO { get; set; }
-        public virtual DbSet<AVALIACAO> AVALIACAO { get; set; }
+        public virtual DbSet<ATIVIDADE> ATIVIDADE { get; set; }
+        public virtual DbSet<ATIVIDADE_PROFMT> ATIVIDADE_PROFMT { get; set; }
         public virtual DbSet<MATERIA> MATERIA { get; set; }
-        public virtual DbSet<NOTA> NOTA { get; set; }
         public virtual DbSet<PROFESSOR> PROFESSOR { get; set; }
         public virtual DbSet<PROFMATERIATURMA> PROFMATERIATURMA { get; set; }
         public virtual DbSet<TURMA> TURMA { get; set; }
+        public virtual DbSet<TURMA_PROFMT> TURMA_PROFMT { get; set; }
         public virtual DbSet<Usuario> Usuario { get; set; }
-
-        public System.Data.Entity.DbSet<Boletim.Models.PROFMATERIATURMA> PROFMATERIATURMAs { get; set; }
     }
 }

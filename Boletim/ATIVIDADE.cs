@@ -14,16 +14,23 @@ namespace Boletim
     
     public partial class ATIVIDADE
     {
-        public int COD_ATIVIDADE { get; set; }
-        public string NOME { get; set; }
-        public string DESCRICAO { get; set; }
-        public System.DateTime DATA_INI { get; set; }
-        public System.DateTime DATA_FIM { get; set; }
-        public int COD_PROF { get; set; }
-        public int COD_MATERIA { get; set; }
-        public int COD_TURMA { get; set; }
-        public int PERIODO_LETIVO { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public ATIVIDADE()
+        {
+            this.ATIVIDADE_PROFMT = new HashSet<ATIVIDADE_PROFMT>();
+            this.ALUNO = new HashSet<ALUNO>();
+        }
     
-        public virtual PROFMATERIATURMA PROFMATERIATURMA { get; set; }
+        public int COD_ATIVIDADE { get; set; }
+        public string NOME_ATIVIDADE { get; set; }
+        public System.DateTime DATA_ENTREGA { get; set; }
+        public Nullable<byte> TIPO_ATIVIDADE { get; set; }
+        public int COD_MATERIA { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ATIVIDADE_PROFMT> ATIVIDADE_PROFMT { get; set; }
+        public virtual MATERIA MATERIA { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ALUNO> ALUNO { get; set; }
     }
 }

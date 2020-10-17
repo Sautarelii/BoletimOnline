@@ -12,18 +12,17 @@ namespace Boletim
     using System;
     using System.Collections.Generic;
     
-    public partial class AVALIACAO
+    public partial class ATIVIDADE_PROFMT
     {
-        public int COD_AVALIACAO { get; set; }
-        public string NOME { get; set; }
-        public string DESCRICAO { get; set; }
-        public System.DateTime DATA { get; set; }
-        public decimal PESO { get; set; }
+        public int COD_ATIVIDADE { get; set; }
         public int COD_PROF { get; set; }
         public int COD_MATERIA { get; set; }
         public int COD_TURMA { get; set; }
-        public Nullable<int> PERIODO_LETIVO { get; set; }
+        public int PERIODO_LETIVO { get; set; }
     
-        public virtual PROFMATERIATURMA PROFMATERIATURMA { get; set; }
+        public virtual ATIVIDADE ATIVIDADE { get; set; }
+        public virtual MATERIA MATERIA { get; set; }
+        public virtual PROFESSOR PROFESSOR { get; set; }
+        public virtual TURMA TURMA { get; set; }
     }
 }

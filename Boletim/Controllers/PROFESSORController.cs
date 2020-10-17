@@ -16,7 +16,7 @@ using SistemaBoletim.Repositories;
 
 public class PROFESSORController : Controller
 {
-    private BoletimOnline2Entities3 db = new BoletimOnline2Entities3();
+    private BoletimOnline2Entities6 db = new BoletimOnline2Entities6();
 
 
     // GET: Administrador

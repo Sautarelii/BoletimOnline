@@ -1,0 +1,50 @@
+﻿@model Boletim.ATIVIDADE
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>ATIVIDADE</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.NOME_ATIVIDADE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NOME_ATIVIDADE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DATA_ENTREGA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DATA_ENTREGA)
+        </dd>
+
+        <dt>
+            @Html.DisplayFor(model => model.TIPO_ATIVIDADE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TIPO_ATIVIDADE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MATERIA.NOME)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MATERIA.NOME)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.COD_ATIVIDADE }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

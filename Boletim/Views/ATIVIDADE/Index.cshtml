@@ -1,0 +1,94 @@
+﻿@model IEnumerable<Boletim.ATIVIDADE>
+
+@{
+    ViewBag.Title = "Index";
+}
+    <html>
+    <head>
+        <style>
+            .btn-primary {
+                border-radius: 30px;
+                box-sizing: border-box;
+                height:30px;
+            }
+        </style>
+
+
+    </head>
+<br />
+    <h2>Atividade</h2>
+
+    <p>
+        @Html.ActionLink("Adicionar Atividade", "Create", new { }, new { @class = "btn btn-success" }) 
+    </p>
+<br />
+   <p>
+      
+       @using (Html.BeginForm("Index", "ATIVIDADE", FormMethod.Get))
+       {
+           @Html.TextBox("Pesquisa")
+           <input type="submit" value="Pesquisar" />
+       }
+   </p>
+
+    <table class="table">
+        <br />
+        <br />
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.NOME_ATIVIDADE)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DATA_ENTREGA)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TIPO_ATIVIDADE)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MATERIA.NOME)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NOME_ATIVIDADE)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DATA_ENTREGA)
+                </td>
+                <td>
+                    @{
+                        var tipo = "";
+                    }
+
+                    @if (item.TIPO_ATIVIDADE == 0)
+                    {
+                        tipo = "DIVERSIFICADA";
+                    }
+                    else if (item.TIPO_ATIVIDADE == 1)
+                    {
+                        tipo = "OBRIGATÓRIA";
+                    }
+                    else if (item.TIPO_ATIVIDADE == 2)
+                    {
+                        tipo = "ATITUDINAL";
+                    }
+
+                    @tipo
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MATERIA.NOME)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.COD_ATIVIDADE }, new { @class = "btn btn-warning" }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.COD_ATIVIDADE }, new { @class = "btn btn-primary" })  |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.COD_ATIVIDADE }, new { @class = "btn btn-danger" })
+                </td>
+            </tr>
+        }
+
+    </table>
+    </html>

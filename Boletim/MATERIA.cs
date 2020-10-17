@@ -17,16 +17,22 @@ namespace Boletim
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public MATERIA()
         {
-            this.NOTA = new HashSet<NOTA>();
+            this.ATIVIDADE = new HashSet<ATIVIDADE>();
+            this.ATIVIDADE_PROFMT = new HashSet<ATIVIDADE_PROFMT>();
             this.PROFMATERIATURMA = new HashSet<PROFMATERIATURMA>();
+            this.TURMA_PROFMT = new HashSet<TURMA_PROFMT>();
         }
     
         public int COD_MATERIA { get; set; }
         public string NOME { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<NOTA> NOTA { get; set; }
+        public virtual ICollection<ATIVIDADE> ATIVIDADE { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ATIVIDADE_PROFMT> ATIVIDADE_PROFMT { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PROFMATERIATURMA> PROFMATERIATURMA { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<TURMA_PROFMT> TURMA_PROFMT { get; set; }
     }
 }

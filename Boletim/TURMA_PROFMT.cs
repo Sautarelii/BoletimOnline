@@ -12,7 +12,7 @@ namespace Boletim
     using System;
     using System.Collections.Generic;
     
-    public partial class PROFMATERIATURMA
+    public partial class TURMA_PROFMT
     {
         public int COD_PROF { get; set; }
         public int COD_MATERIA { get; set; }
@@ -22,5 +22,6 @@ namespace Boletim
         public virtual MATERIA MATERIA { get; set; }
         public virtual PROFESSOR PROFESSOR { get; set; }
         public virtual TURMA TURMA { get; set; }
+        public virtual TURMA TURMA1 { get; set; }
     }
 }

@@ -26,7 +26,7 @@
     <h2>Aluno</h2>
     <br>
     <p>
-        @Html.ActionLink("Criar novo Aluno", "CreateAluno", new { }, new { @class = "btn btn-success" })
+        @Html.ActionLink("Adicionar Aluno", "CreateAluno", new { }, new { @class = "btn btn-success" })
         <br>
         <br>
         <table class="table">
@@ -51,7 +51,7 @@
                     </td>
                     <td>
                     <td>
-                        @Html.ActionLink("Edit", "EditAluno", new { id = item.COD_ALUNO}, new { @class = "btn btn-success" }) |
+                        @Html.ActionLink("Edit", "EditAluno", new { id = item.COD_ALUNO}, new { @class = "btn btn-warning" }) |
                         @Html.ActionLink("Details", "Details", new { id = item.COD_ALUNO }, new { @class = "btn btn-primary" }) |
                         @Html.ActionLink("Delete", "Delete", new { id = item.COD_ALUNO }, new { @class = "btn btn-danger" })
                     </td>

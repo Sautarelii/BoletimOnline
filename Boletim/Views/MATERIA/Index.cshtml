@@ -28,7 +28,7 @@
     <h2>Materia</h2>
     <br>
     <p>
-        @Html.ActionLink("Criar Materia", "Create", new { }, new { @class = "btn btn-success" })
+        @Html.ActionLink("Adicionar Materia", "Create", new { }, new { @class = "btn btn-success" })
     </p>
     <br>
     <br>
@@ -49,7 +49,7 @@
                     @Html.DisplayFor(modelItem => item.NOME)
                 </td>
                 <td>
-                    @Html.ActionLink("Editar", "Edit", new { id = item.COD_MATERIA }, new { @class = "btn btn-success" }) |
+                    @Html.ActionLink("Editar", "Edit", new { id = item.COD_MATERIA }, new { @class = "btn btn-warning" }) |
                     @Html.ActionLink("Detalhar", "Details", new { id = item.COD_MATERIA }, new { @class = "btn btn-primary" }) |
                     @Html.ActionLink("Delete", "Delete", new { id = item.COD_MATERIA }, new { @class = "btn btn-danger" })
                 </td>

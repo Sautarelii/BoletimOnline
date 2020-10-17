@@ -9,6 +9,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.UI.WebControls;
 using Boletim;
 using Boletim.Models;
 using Microsoft.Owin.Security;
@@ -16,7 +17,7 @@ using SistemaBoletim.Repositories;
 
 public class AdministradorController : Controller
 {
-    private BoletimOnline2Entities3 db = new BoletimOnline2Entities3();
+    private BoletimOnline2Entities6 db = new BoletimOnline2Entities6();
 
 
     // GET: Administrador
@@ -79,10 +80,12 @@ public class AdministradorController : Controller
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+           
         }
 
         return View(adminViewModel);
     }
+  
 
     [HttpPost]
     [ValidateAntiForgeryToken]
@@ -378,9 +381,10 @@ public class AdministradorController : Controller
         var context = Request.GetOwinContext();
         var authManager = context.Authentication;
         authManager.SignIn(identity);
-        
-    }
 
+        ViewBag.UpdatePerfilStatus = "OK";
+    }
+ 
     public ActionResult LogOut()
     {
         var ctx = Request.GetOwinContext();
@@ -392,7 +396,10 @@ public class AdministradorController : Controller
         Session.RemoveAll();
         return RedirectToAction("Login", "Administrador");
     }
+    
 }
+
+
 
     
 

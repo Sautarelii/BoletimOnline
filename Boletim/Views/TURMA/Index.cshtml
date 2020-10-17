@@ -3,66 +3,37 @@
 @{
     ViewBag.Title = "Index";
 }
-<style>
-    body {
-        background-image: url(../../Content/img/Imagem2.jpg);
-        margin: 100px;
-    }
+<br />
+<h2>Turma</h2>
 
-    .um {
-        width: 100%;
-        color: #000;
-        border: 4px solid #000;
-        height: 1100px;
-        background-color: white;
-        border-radius: 25px;
-        box-sizing: border-box;
-    }
+<p>
+    @Html.ActionLink("Adicionar Turma", "Create", new { }, new { @class = "btn btn-success" })
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.SERIE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PERIODO_LET)
+        </th>
+        <th></th>
+    </tr>
 
-    h2 {
-        color: black
-    }
-</style>
-<div class="um">
-    <h2>Turma</h2>
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.SERIE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PERIODO_LET)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.COD_TURMA }, new { @class = "btn btn-warning" }) |
+            @Html.ActionLink("Details", "Details", new { id=item.COD_TURMA }, new { @class = "btn btn-primary" }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.COD_TURMA }, new { @class = "btn btn-danger" })
+        </td>
+    </tr>
+}
 
-    <p>
-        <br>
-        @Html.ActionLink("Criar Turma", "Create", new { }, new { @class = "btn btn-success" })
-    </p>
-    <br>
-    <br>
-    <table class="table">
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.SERIE)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.PERIODO_LET)
-            </th>
-            <th></th>
-        </tr>
-
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.SERIE)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.PERIODO_LET)
-                </td>
-                <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.COD_TURMA }, new { @class = "btn btn-success" }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.COD_TURMA }, new { @class = "btn btn-primary" }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.COD_TURMA }, new { @class = "btn btn-danger" }
-)
-                </td>
-            </tr>
-        }
-
-    </table>
-</div>
-<div>
-    @Html.ActionLink("Retornar", "Cadastramentos", "Home", null, new { @class = "btn btn-primary" })
-</div>
+</table>

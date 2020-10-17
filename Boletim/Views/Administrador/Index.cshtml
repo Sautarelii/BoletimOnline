@@ -52,7 +52,7 @@
                         @Html.DisplayFor(modelItem => item.Usuario.Email)
                     </td>
                     <td>
-                        @Html.ActionLink("Editar", "EditAdmin", new { id = item.Cod_Administrador },new {@class = "btn btn-success" }) |
+                        @Html.ActionLink("Editar", "EditAdmin", new { id = item.Cod_Administrador },new {@class = "btn btn-warning" }) |
                         @Html.ActionLink("Detalhar", "Details", new { id = item.Cod_Administrador }, new { @class = "btn btn-primary" }) |
                         @Html.ActionLink("Delete", "Delete", new { id = item.Cod_Administrador }, new { @class = "btn btn-danger" })
                     </td>

@@ -28,7 +28,7 @@
     <h2>Professor</h2>
     <br>
     <p>
-        @Html.ActionLink("Criar Professor", "CreateProfessor", new { }, new { @class = "btn btn-success" })
+        @Html.ActionLink("Adicionar Professor", "CreateProfessor", new { }, new { @class = "btn btn-success" })
     </p>
     <br>
     <br>
@@ -54,7 +54,7 @@
                 </td>
                 <td>
                 <td>
-                    @Html.ActionLink("Edit", "EditProfessor", new { id = item.COD_PROF }, new { @class = "btn btn-success" }) |
+                    @Html.ActionLink("Edit", "EditProfessor", new { id = item.COD_PROF }, new { @class = "btn btn-warning" }) |
                     @Html.ActionLink("Details", "Details", new { id = item.COD_PROF }, new { @class = "btn btn-primary" }) |
                     @Html.ActionLink("Delete", "Delete", new { id = item.COD_PROF}, new { @class = "btn btn-danger" })
                 </td>

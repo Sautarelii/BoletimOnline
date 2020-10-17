@@ -10,120 +10,123 @@ using Boletim;
 
 namespace Boletim.Controllers
 {
-    public class NOTAController : Controller
+    public class ATIVIDADEController : Controller
     {
-        private BoletimOnline2Entities3 db = new BoletimOnline2Entities3();
+        private BoletimOnline2Entities6 db = new BoletimOnline2Entities6();
 
-        // GET: NOTA
-        public ActionResult Index()
+       
+
+        // GET: ATIVIDADE
+        public ActionResult Index(string Pesquisa = "")
         {
-            var nOTA = db.NOTA.Include(n => n.MATERIA).Include(n => n.PROFESSOR).Include(n => n.TURMA);
-            return View(nOTA.ToList());
-        }
+            var q = db.ATIVIDADE.AsQueryable();
+            if (!string.IsNullOrEmpty(Pesquisa))
+                q = q.Where(c => c.NOME_ATIVIDADE.Contains(Pesquisa));
+            q = q.OrderBy(c => c.NOME_ATIVIDADE);
 
-        // GET: NOTA/Details/5
+
+            return View(q.ToList());
+        }
+        
+            
+
+        
+
+        // GET: ATIVIDADE/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            NOTA nOTA = db.NOTA.Find(id);
-            if (nOTA == null)
+            ATIVIDADE aTIVIDADE = db.ATIVIDADE.Find(id);
+            if (aTIVIDADE == null)
             {
                 return HttpNotFound();
             }
-            return View(nOTA);
+            return View(aTIVIDADE);
         }
 
-        // GET: NOTA/Create
+        // GET: ATIVIDADE/Create
         public ActionResult Create()
         {
             ViewBag.COD_MATERIA = new SelectList(db.MATERIA, "COD_MATERIA", "NOME");
-            ViewBag.COD_PROF = new SelectList(db.PROFESSOR, "COD_PROF", "NOME");
-            ViewBag.COD_TURMA = new SelectList(db.TURMA, "COD_TURMA", "SERIE");
             return View();
         }
 
-        // POST: NOTA/Create
+        // POST: ATIVIDADE/Create
         // Para se proteger de mais ataques, ative as propriedades específicas a que você quer se conectar. Para 
         // obter mais detalhes, consulte https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "COD_NOTA,COD_ALUNO,COD_PROF,COD_MATERIA,COD_TURMA,VALOR")] NOTA nOTA)
+        public ActionResult Create([Bind(Include = "COD_ATIVIDADE,NOME_ATIVIDADE,DATA_ENTREGA,TIPO_ATIVIDADE,COD_MATERIA")] ATIVIDADE aTIVIDADE)
         {
             if (ModelState.IsValid)
             {
-                db.NOTA.Add(nOTA);
+                db.ATIVIDADE.Add(aTIVIDADE);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-
-            ViewBag.COD_MATERIA = new SelectList(db.MATERIA, "COD_MATERIA", "NOME", nOTA.COD_MATERIA);
-            ViewBag.COD_PROF = new SelectList(db.PROFESSOR, "COD_PROF", "NOME", nOTA.COD_PROF);
-            ViewBag.COD_TURMA = new SelectList(db.TURMA, "COD_TURMA", "SERIE", nOTA.COD_TURMA);
-            return View(nOTA);
+           
+            ViewBag.COD_MATERIA = new SelectList(db.MATERIA, "COD_MATERIA", "NOME", aTIVIDADE.COD_MATERIA);
+            return View(aTIVIDADE);
         }
-
-        // GET: NOTA/Edit/5
+       
+        // GET: ATIVIDADE/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            NOTA nOTA = db.NOTA.Find(id);
-            if (nOTA == null)
+            ATIVIDADE aTIVIDADE = db.ATIVIDADE.Find(id);
+            if (aTIVIDADE == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.COD_MATERIA = new SelectList(db.MATERIA, "COD_MATERIA", "NOME", nOTA.COD_MATERIA);
-            ViewBag.COD_PROF = new SelectList(db.PROFESSOR, "COD_PROF", "NOME", nOTA.COD_PROF);
-            ViewBag.COD_TURMA = new SelectList(db.TURMA, "COD_TURMA", "SERIE", nOTA.COD_TURMA);
-            return View(nOTA);
+            ViewBag.COD_MATERIA = new SelectList(db.MATERIA, "COD_MATERIA", "NOME", aTIVIDADE.COD_MATERIA);
+            return View(aTIVIDADE);
         }
 
-        // POST: NOTA/Edit/5
+        // POST: ATIVIDADE/Edit/5
         // Para se proteger de mais ataques, ative as propriedades específicas a que você quer se conectar. Para 
         // obter mais detalhes, consulte https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "COD_NOTA,COD_ALUNO,COD_PROF,COD_MATERIA,COD_TURMA,VALOR")] NOTA nOTA)
+        public ActionResult Edit([Bind(Include = "COD_ATIVIDADE,NOME_ATIVIDADE,DATA_ENTREGA,TIPO_ATIVIDADE,COD_MATERIA")] ATIVIDADE aTIVIDADE)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(nOTA).State = EntityState.Modified;
+                db.Entry(aTIVIDADE).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.COD_MATERIA = new SelectList(db.MATERIA, "COD_MATERIA", "NOME", nOTA.COD_MATERIA);
-            ViewBag.COD_PROF = new SelectList(db.PROFESSOR, "COD_PROF", "NOME", nOTA.COD_PROF);
-            ViewBag.COD_TURMA = new SelectList(db.TURMA, "COD_TURMA", "SERIE", nOTA.COD_TURMA);
-            return View(nOTA);
+            ViewBag.COD_MATERIA = new SelectList(db.MATERIA, "COD_MATERIA", "NOME", aTIVIDADE.COD_MATERIA);
+            return View(aTIVIDADE);
         }
 
-        // GET: NOTA/Delete/5
+        // GET: ATIVIDADE/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            NOTA nOTA = db.NOTA.Find(id);
-            if (nOTA == null)
+            ATIVIDADE aTIVIDADE = db.ATIVIDADE.Find(id);
+            if (aTIVIDADE == null)
             {
                 return HttpNotFound();
             }
-            return View(nOTA);
+            return View(aTIVIDADE);
         }
 
-        // POST: NOTA/Delete/5
+        // POST: ATIVIDADE/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            NOTA nOTA = db.NOTA.Find(id);
-            db.NOTA.Remove(nOTA);
+            ATIVIDADE aTIVIDADE = db.ATIVIDADE.Find(id);
+            db.ATIVIDADE.Remove(aTIVIDADE);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

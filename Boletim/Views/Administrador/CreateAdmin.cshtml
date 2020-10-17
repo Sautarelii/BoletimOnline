@@ -1,17 +1,17 @@
 ﻿@model Boletim.Models.AdminViewModel
 
 @{
-    ViewBag.Title = "CreateAdmin";
+    ViewBag.Title = "Adiconar Admin";
 }
 
-<h2>CreateAdmin</h2>
+<h2>Adicionar Administrador</h2>
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
-        <h4>AdminViewModel</h4>
+        
         <hr />
 
 
@@ -61,7 +61,7 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <input type="submit" value="Adicionar" class="btn btn-default" />
             </div>
         </div>
     </div>
@@ -70,3 +70,23 @@
 <div>
     @Html.ActionLink("Back to List", "Index")
 </div>
+<div id="perfil">
+    @{
+        if (!String.IsNullOrEmpty(ViewBag.UpdatePerfilStatus) && ViewBag.UpdatePerfilStatus == "OK")
+        {
+        <script>
+    $.toast({
+                heading: 'Sucesso',
+                text: 'Cadastro com sucesso',
+                position{
+                left: 120,
+                top: 120
+            },
+                icon: 'success',
+                stack: false
+           })</script>
+            }
+        }
+</div>
+<script src="~/Content/PastaCss/jquery.toast.min.js"</script>
+

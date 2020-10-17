@@ -3,35 +3,45 @@
 @{
     ViewBag.Title = "Index";
 }
-
-<h2>Index</h2>
+<br />
+<h2>Atribuição</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Adicionar", "Create", new { }, new { @class = "btn btn-success" })
 </p>
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.COD_MATERIA; 
+            @Html.DisplayNameFor(model => model.MATERIA.NOME)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Email)
+            @Html.DisplayNameFor(model => model.PROFESSOR.NOME)
         </th>
-        <th></th>
+        <th>
+            @Html.DisplayNameFor(model => model.TURMA.SERIE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TURMA.PERIODO_LET)
+        </th>
     </tr>
 
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.Nome)
+            @Html.DisplayFor(modelItem => item.MATERIA.NOME)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Email)
+            @Html.DisplayFor(modelItem => item.PROFESSOR.NOME)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.PROFMATERIATURMAid}) |
-            @Html.ActionLink("Details", "Details", new { id=item.PROFMATERIATURMAid }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.PROFMATERIATURMAid })
+            @Html.DisplayFor(modelItem => item.TURMA.SERIE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TURMA.PERIODO_LET)
+
+
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ }, new { @class = "btn btn-danger" })
+
         </td>
     </tr>
 }

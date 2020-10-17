@@ -59,7 +59,7 @@
                         c => c.Type == ClaimTypes.Role
                         && c.Value == "ALUNO"))
                     {
-                        <li>@Html.ActionLink("Quem somos", "Index", "Home")</li>
+                        
                         <li>@Html.ActionLink("Visualizar Nota", "Index", "PROFESSOR")</li>
                     }
 
@@ -69,7 +69,7 @@
                     c => c.Type == ClaimTypes.Role
                     && c.Value == "PROFESSOR"))
                     {
-                        <li>@Html.ActionLink("Quem somos", "Index", "Home")</li>
+
                         <li>@Html.ActionLink("Atribuição", "Index", "PROFMATERIATURMA")</li>
                     }
                 </ul>

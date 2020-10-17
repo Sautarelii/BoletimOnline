@@ -1,4 +1,4 @@
-﻿@model Boletim.Models.PROFMATERIATURMA
+﻿@model Boletim.PROFMATERIATURMA
 
 @{
     ViewBag.Title = "Delete";
@@ -12,19 +12,27 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.Nome)
+            @Html.DisplayNameFor(model => model.MATERIA.NOME)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Nome)
+            @Html.DisplayFor(model => model.MATERIA.NOME)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Email)
+            @Html.DisplayNameFor(model => model.PROFESSOR.NOME)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Email)
+            @Html.DisplayFor(model => model.PROFESSOR.NOME)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TURMA.SERIE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TURMA.SERIE)
         </dd>
 
     </dl>

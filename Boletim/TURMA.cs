@@ -17,9 +17,10 @@ namespace Boletim
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public TURMA()
         {
-            this.NOTA = new HashSet<NOTA>();
+            this.ATIVIDADE_PROFMT = new HashSet<ATIVIDADE_PROFMT>();
             this.PROFMATERIATURMA = new HashSet<PROFMATERIATURMA>();
-            this.ALUNO = new HashSet<ALUNO>();
+            this.TURMA_PROFMT = new HashSet<TURMA_PROFMT>();
+            this.TURMA_PROFMT1 = new HashSet<TURMA_PROFMT>();
         }
     
         public int COD_TURMA { get; set; }
@@ -27,10 +28,12 @@ namespace Boletim
         public string PERIODO_LET { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<NOTA> NOTA { get; set; }
+        public virtual ICollection<ATIVIDADE_PROFMT> ATIVIDADE_PROFMT { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PROFMATERIATURMA> PROFMATERIATURMA { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ALUNO> ALUNO { get; set; }
+        public virtual ICollection<TURMA_PROFMT> TURMA_PROFMT { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<TURMA_PROFMT> TURMA_PROFMT1 { get; set; }
     }
 }
