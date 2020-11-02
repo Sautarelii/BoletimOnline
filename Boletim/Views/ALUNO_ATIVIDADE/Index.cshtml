@@ -1,0 +1,43 @@
+﻿@model IEnumerable<Boletim.ALUNO_ATIVIDADE>
+
+@{
+    ViewBag.Title = "Index";
+}
+<br />
+<h2>Atribuição das Atividades</h2>
+
+<p>
+    @Html.ActionLink("Atribuir nota", "Create", new { }, new { @class = "btn btn-success" }) 
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.NOTA)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ALUNO.NOME)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ATIVIDADE.NOME_ATIVIDADE)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.NOTA)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ALUNO.NOME)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ATIVIDADE.NOME_ATIVIDADE)
+        </td>
+        <td>
+          
+        </td>
+    </tr>
+}
+
+</table>

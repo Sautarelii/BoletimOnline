@@ -1,0 +1,44 @@
+﻿@model IEnumerable<Boletim.PROFMATERIATURMA>
+
+@{
+    ViewBag.Title = "Index";
+}
+<br />
+<h2>Listagem  de atribuição</h2>
+
+<p>
+  
+</p>
+<br />
+<table class="table">
+    <tr>
+        <th>
+            NOME DA MATERIA
+        </th>      
+        <th>
+            TURMA
+        </th>
+        <th>
+            PERIODO 
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.MATERIA.NOME)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TURMA.SERIE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TURMA.PERIODO_LET)
+
+            @Html.ActionLink(" Listar Atividade", "Index", "ATIVIDADE_PROFMT", new { /* id=item.PrimaryKey */ }, new { @class = "btn btn-info" }) 
+            @Html.ActionLink("Deletar", "Delete", new { /* id=item.PrimaryKey */ }, new { @class = "btn btn-danger" })
+           
+        </td>
+    </tr>
+}
+
+</table>

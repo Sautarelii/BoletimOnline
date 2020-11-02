@@ -35,10 +35,10 @@
     <table class="table">
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.NOME)
+            NOME DO PROFESSOR
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Usuario.Email)
+               EMAIL
             </th>
             <th></th>
         </tr>
@@ -54,14 +54,16 @@
                 </td>
                 <td>
                 <td>
-                    @Html.ActionLink("Edit", "EditProfessor", new { id = item.COD_PROF }, new { @class = "btn btn-warning" }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.COD_PROF }, new { @class = "btn btn-primary" }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.COD_PROF}, new { @class = "btn btn-danger" })
+                    @Html.ActionLink("Editar", "EditProfessor", new { id = item.COD_PROF }, new { @class = "btn btn-warning" }) |
+                    @Html.ActionLink("Detalhar", "Details", new { id = item.COD_PROF }, new { @class = "btn btn-primary" }) |
+                    @Html.ActionLink("Deletar", "Delete", new { id = item.COD_PROF}, new { @class = "btn btn-danger" })
                 </td>
             </tr>
         }
 
     </table>
+    <br />
+    <br />
 <div>
-    @Html.ActionLink("Retornar", "Cadastramentos", "Home", null, new { @class = "btn btn-primary" })
+
 </div>

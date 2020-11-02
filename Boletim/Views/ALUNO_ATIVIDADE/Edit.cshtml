@@ -1,33 +1,34 @@
-﻿@model Boletim.MATERIA
+﻿@model Boletim.ALUNO_ATIVIDADE
 
 @{
-    ViewBag.Title = "Editar Materia";
+    ViewBag.Title = "Editar";
 }
 
-<h2>Editar Materia</h2>
+<h2>Editar Aluno Atividade</h2>
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>MATERIA</h4>
+        <h4>ALUNOA TIVIDADE</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.COD_MATERIA)
+        @Html.HiddenFor(model => model.COD_ALUNO)
+
+        @Html.HiddenFor(model => model.COD_ATIVIDADE)
 
         <div class="form-group">
-            @Html.LabelFor(model => model.NOME, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.NOTA, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.NOME, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.NOME, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.NOTA, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.NOTA, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="Salvar" class="btn btn-success" />
-
             </div>
         </div>
     </div>

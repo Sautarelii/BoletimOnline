@@ -17,15 +17,17 @@ namespace Boletim
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public ALUNO()
         {
-            this.ATIVIDADE = new HashSet<ATIVIDADE>();
+            this.ALUNO_ATIVIDADE = new HashSet<ALUNO_ATIVIDADE>();
         }
     
         public int COD_ALUNO { get; set; }
         public string NOME { get; set; }
+        public Nullable<int> COD_TURMA { get; set; }
         public Nullable<int> UsuarioId { get; set; }
     
         public virtual Usuario Usuario { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ATIVIDADE> ATIVIDADE { get; set; }
+        public virtual ICollection<ALUNO_ATIVIDADE> ALUNO_ATIVIDADE { get; set; }
+        public virtual TURMA TURMA { get; set; }
     }
 }

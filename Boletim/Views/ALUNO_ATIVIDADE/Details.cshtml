@@ -1,4 +1,4 @@
-﻿@model Boletim.PROFMATERIATURMA
+﻿@model Boletim.ALUNO_ATIVIDADE
 
 @{
     ViewBag.Title = "Details";
@@ -7,31 +7,31 @@
 <h2>Detalhe</h2>
 
 <div>
-    <h4>PROFMATERIATURMA</h4>
+    <h4>ALUNO_ATIVIDADE</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.MATERIA.NOME)
+            @Html.DisplayNameFor(model => model.NOTA)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.MATERIA.NOME)
+            @Html.DisplayFor(model => model.NOTA)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.PROFESSOR.NOME)
+            @Html.DisplayNameFor(model => model.ALUNO.NOME)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.PROFESSOR.NOME)
+            @Html.DisplayFor(model => model.ALUNO.NOME)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.TURMA.SERIE)
+            @Html.DisplayNameFor(model => model.ATIVIDADE.NOME_ATIVIDADE)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.TURMA.SERIE)
+            @Html.DisplayFor(model => model.ATIVIDADE.NOME_ATIVIDADE)
         </dd>
 
     </dl>

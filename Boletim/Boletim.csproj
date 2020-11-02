@@ -141,38 +141,43 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Administrador.cs">
-      <DependentUpon>BoletimOnlineModel.tt</DependentUpon>
+      <DependentUpon>BoletimOnlineModell.tt</DependentUpon>
     </Compile>
     <Compile Include="ALUNO.cs">
-      <DependentUpon>BoletimOnlineModel.tt</DependentUpon>
+      <DependentUpon>BoletimOnlineModell.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ALUNO_ATIVIDADE.cs">
+      <DependentUpon>BoletimOnlineModell.tt</DependentUpon>
     </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="ATIVIDADE.cs">
-      <DependentUpon>BoletimOnlineModel.tt</DependentUpon>
+      <DependentUpon>BoletimOnlineModell.tt</DependentUpon>
     </Compile>
     <Compile Include="ATIVIDADE_PROFMT.cs">
-      <DependentUpon>BoletimOnlineModel.tt</DependentUpon>
+      <DependentUpon>BoletimOnlineModell.tt</DependentUpon>
     </Compile>
-    <Compile Include="BoletimOnlineModel.Context.cs">
+    <Compile Include="BoletimOnlineModell.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>BoletimOnlineModel.Context.tt</DependentUpon>
+      <DependentUpon>BoletimOnlineModell.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="BoletimOnlineModel.cs">
+    <Compile Include="BoletimOnlineModell.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>BoletimOnlineModel.tt</DependentUpon>
+      <DependentUpon>BoletimOnlineModell.tt</DependentUpon>
     </Compile>
-    <Compile Include="BoletimOnlineModel.Designer.cs">
+    <Compile Include="BoletimOnlineModell.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>BoletimOnlineModel.edmx</DependentUpon>
+      <DependentUpon>BoletimOnlineModell.edmx</DependentUpon>
     </Compile>
     <Compile Include="Controllers\AdministradorController.cs" />
     <Compile Include="Controllers\ALUNOController.cs" />
+    <Compile Include="Controllers\ALUNO_ATIVIDADEController.cs" />
     <Compile Include="Controllers\ATIVIDADEController.cs" />
+    <Compile Include="Controllers\ATIVIDADE_PROFMTController.cs" />
     <Compile Include="Controllers\CadastroEntities.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MATERIAController.cs" />
@@ -183,7 +188,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="MATERIA.cs">
-      <DependentUpon>BoletimOnlineModel.tt</DependentUpon>
+      <DependentUpon>BoletimOnlineModell.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\AdminViewModel.cs" />
     <Compile Include="Models\AlunoViewModel.cs" />
@@ -191,23 +196,24 @@
     <Compile Include="Models\ProfessorViewModel.cs" />
     <Compile Include="Models\PROFMATERIATURMA.cs" />
     <Compile Include="Models\Tipo_Atividade.cs" />
+    <Compile Include="Models\TurmaViewModel.cs" />
     <Compile Include="OwinStartup.cs" />
     <Compile Include="PROFESSOR.cs">
-      <DependentUpon>BoletimOnlineModel.tt</DependentUpon>
+      <DependentUpon>BoletimOnlineModell.tt</DependentUpon>
     </Compile>
     <Compile Include="PROFMATERIATURMA.cs">
-      <DependentUpon>BoletimOnlineModel.tt</DependentUpon>
+      <DependentUpon>BoletimOnlineModell.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\UsuarioRepository.cs" />
     <Compile Include="TURMA.cs">
-      <DependentUpon>BoletimOnlineModel.tt</DependentUpon>
+      <DependentUpon>BoletimOnlineModell.tt</DependentUpon>
     </Compile>
     <Compile Include="TURMA_PROFMT.cs">
-      <DependentUpon>BoletimOnlineModel.tt</DependentUpon>
+      <DependentUpon>BoletimOnlineModell.tt</DependentUpon>
     </Compile>
     <Compile Include="Usuario.cs">
-      <DependentUpon>BoletimOnlineModel.tt</DependentUpon>
+      <DependentUpon>BoletimOnlineModell.tt</DependentUpon>
     </Compile>
     <Compile Include="Views\HomeCadastramento\Cadastramentos.cs" />
     <Compile Include="Views\Home\CadastramentoController.cs" />
@@ -215,15 +221,15 @@
     <Compile Include="Views\Shared\Administrador.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="BoletimOnlineModel.Context.tt">
+    <Content Include="BoletimOnlineModell.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>BoletimOnlineModel.edmx</DependentUpon>
-      <LastGenOutput>BoletimOnlineModel.Context.cs</LastGenOutput>
+      <DependentUpon>BoletimOnlineModell.edmx</DependentUpon>
+      <LastGenOutput>BoletimOnlineModell.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="BoletimOnlineModel.tt">
+    <Content Include="BoletimOnlineModell.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>BoletimOnlineModel.edmx</DependentUpon>
-      <LastGenOutput>BoletimOnlineModel.cs</LastGenOutput>
+      <DependentUpon>BoletimOnlineModell.edmx</DependentUpon>
+      <LastGenOutput>BoletimOnlineModell.cs</LastGenOutput>
     </Content>
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
@@ -254,12 +260,12 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Content\img\BoletimBanner.png" />
-    <EntityDeploy Include="BoletimOnlineModel.edmx">
+    <EntityDeploy Include="BoletimOnlineModell.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>BoletimOnlineModel.Designer.cs</LastGenOutput>
+      <LastGenOutput>BoletimOnlineModell.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="BoletimOnlineModel.edmx.diagram">
-      <DependentUpon>BoletimOnlineModel.edmx</DependentUpon>
+    <Content Include="BoletimOnlineModell.edmx.diagram">
+      <DependentUpon>BoletimOnlineModell.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
@@ -332,6 +338,17 @@
     <Content Include="Views\ATIVIDADE\Details.cshtml" />
     <Content Include="Views\ATIVIDADE\Edit.cshtml" />
     <Content Include="Views\ATIVIDADE\Index.cshtml" />
+    <Content Include="Views\ALUNO_ATIVIDADE\Create.cshtml" />
+    <Content Include="Views\ALUNO_ATIVIDADE\Delete.cshtml" />
+    <Content Include="Views\ALUNO_ATIVIDADE\Details.cshtml" />
+    <Content Include="Views\ALUNO_ATIVIDADE\Edit.cshtml" />
+    <Content Include="Views\ALUNO_ATIVIDADE\Index.cshtml" />
+    <Content Include="Views\ATIVIDADE_PROFMT\Create.cshtml" />
+    <Content Include="Views\ATIVIDADE_PROFMT\Delete.cshtml" />
+    <Content Include="Views\ATIVIDADE_PROFMT\Details.cshtml" />
+    <Content Include="Views\ATIVIDADE_PROFMT\Edit.cshtml" />
+    <Content Include="Views\ATIVIDADE_PROFMT\Index.cshtml" />
+    <Content Include="Views\PROFMATERIATURMA\Listagem.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

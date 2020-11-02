@@ -3,7 +3,7 @@
 @{
     ViewBag.Title = "Details";
 }
-
+<br />
 <h2>Detalhe</h2>
 
 <div>
@@ -21,6 +21,6 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.COD_MATERIA }) |
-    @Html.ActionLink("Voltar", "Index")
+    @Html.ActionLink("Editar", "Edit", new { id = Model.COD_MATERIA }, new { @class = "btn btn-warning" }) |
+    @Html.ActionLink("Voltar", "Index", new { }, new { @class = "btn btn-primary" })
 </p>

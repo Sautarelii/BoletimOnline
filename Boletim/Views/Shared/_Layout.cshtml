@@ -33,46 +33,48 @@
 
                     @{
                         var Usuario = (ClaimsIdentity)User.Identity;
-                        <li>@Html.ActionLink("Quem somos", "Index", "Home")</li>
+                       
+                            <li>@Html.ActionLink("Sobre", "Index", "Home")</li>
+                            
+                            }
+                            @if (Usuario.IsAuthenticated)
+                            {
 
-                    }
-                    @if (Usuario.IsAuthenticated)
-                    {
+                            }
 
-                    }
+                            @if (Usuario.Claims.Any(
+                             c => c.Type == ClaimTypes.Role
+                             && c.Value == "Administrador"))
 
-                    @if (Usuario.Claims.Any(
-                     c => c.Type == ClaimTypes.Role
-                     && c.Value == "Administrador"))
+                            {
+                                //Administrador
+                                <li>@Html.ActionLink("Administrador", "Index", "Administrador")</li>
+                                <li>@Html.ActionLink("Cadastramentos", "Cadastramentos", "Home")</li>
+                                <li>@Html.ActionLink("Atribuição", "Index", "PROFMATERIATURMA")</li>
 
-                    {
-                        //Administrador
-                        <li>@Html.ActionLink("Administrador", "Index", "Administrador")</li>
-                        <li>@Html.ActionLink("Cadastramentos", "Cadastramentos", "Home")</li>
-                        <li>@Html.ActionLink("Atribuição", "Index", "PROFMATERIATURMA")</li>
-
-                    }
-
-
-
-                    @if (Usuario.Claims.Any(
-                        c => c.Type == ClaimTypes.Role
-                        && c.Value == "ALUNO"))
-                    {
-                        
-                        <li>@Html.ActionLink("Visualizar Nota", "Index", "PROFESSOR")</li>
-                    }
+                            }
 
 
 
-                    @if (Usuario.Claims.Any(
-                    c => c.Type == ClaimTypes.Role
-                    && c.Value == "PROFESSOR"))
-                    {
+                            @if (Usuario.Claims.Any(
+                                c => c.Type == ClaimTypes.Role
+                                && c.Value == "ALUNO"))
+                            {
 
-                        <li>@Html.ActionLink("Atribuição", "Index", "PROFMATERIATURMA")</li>
-                    }
-                </ul>
+                                <li>@Html.ActionLink("Visualizar Nota", "Index", "PROFESSOR")</li>
+                            }
+
+
+
+                            @if (Usuario.Claims.Any(
+                            c => c.Type == ClaimTypes.Role
+                            && c.Value == "PROFESSOR"))
+                            {
+
+                                <li>@Html.ActionLink("Atividade", "Index", "ATIVIDADE")</li>
+                                <li>@Html.ActionLink("Avalir Atividade", "Index", "ALUNO_ATIVIDADE")</li>
+                            }
+                    </ul>
 
 
 

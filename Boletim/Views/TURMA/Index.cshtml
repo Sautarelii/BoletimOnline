@@ -5,35 +5,38 @@
 }
 <br />
 <h2>Turma</h2>
-
+<br />
 <p>
     @Html.ActionLink("Adicionar Turma", "Create", new { }, new { @class = "btn btn-success" })
 </p>
+
+<br>
 <table class="table">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.SERIE)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.PERIODO_LET)
+            PERIODO LETIVO
         </th>
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.SERIE)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PERIODO_LET)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.COD_TURMA }, new { @class = "btn btn-warning" }) |
-            @Html.ActionLink("Details", "Details", new { id=item.COD_TURMA }, new { @class = "btn btn-primary" }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.COD_TURMA }, new { @class = "btn btn-danger" })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.SERIE)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PERIODO_LET)
+            </td>
+            <td>
+                @Html.ActionLink("Editar", "Edit", new { id = item.COD_TURMA }, new { @class = "btn btn-warning" }) |
+                @Html.ActionLink("Detalhar", "Details", new { id = item.COD_TURMA }, new { @class = "btn btn-primary" }) |
+                @Html.ActionLink("Deletar", "Delete", new { id = item.COD_TURMA }, new { @class = "btn btn-danger" })
+            </td>
+        </tr>
+    }
 
 </table>

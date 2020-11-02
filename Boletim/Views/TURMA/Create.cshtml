@@ -1,15 +1,14 @@
 ﻿@model Boletim.TURMA
-
 @{
     ViewBag.Title = "Create";
 }
+<br />
+<h2>Adiconar Turma</h2>
 
-<h2>Create</h2>
-
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>TURMA</h4>
         <hr />
@@ -23,7 +22,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.PERIODO_LET, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.PERIODO_LET, "PERIODO LETIVO", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.PERIODO_LET, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.PERIODO_LET, "", new { @class = "text-danger" })
@@ -32,12 +31,31 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <input type="submit" value="Adicionar" class="btn btn-success" />
             </div>
         </div>
     </div>
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Voltar", "Index", new { }, new { @class = "btn btn-primary" })
+</div>
+<div id="turma">
+    @{
+        
+<script>
+    $.toast({
+        heading: "Sucesso",
+        Text: "Turma adicionada!",
+        position: {
+            left: 120,
+            top: 120
+        },
+        icon: `Sucesso`,
+        stack: false
+
+    })
+
+</script>
+    }
 </div>

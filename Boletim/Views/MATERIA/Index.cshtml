@@ -31,13 +31,13 @@
         @Html.ActionLink("Adicionar Materia", "Create", new { }, new { @class = "btn btn-success" })
     </p>
     <br>
-    <br>
+    
     <table class="table">
 
 
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.NOME)
+                NOME DA MATERIA
             </th>
             <th></th>
         </tr>
@@ -51,7 +51,7 @@
                 <td>
                     @Html.ActionLink("Editar", "Edit", new { id = item.COD_MATERIA }, new { @class = "btn btn-warning" }) |
                     @Html.ActionLink("Detalhar", "Details", new { id = item.COD_MATERIA }, new { @class = "btn btn-primary" }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.COD_MATERIA }, new { @class = "btn btn-danger" })
+                    @Html.ActionLink("Deletar", "Delete", new { id = item.COD_MATERIA }, new { @class = "btn btn-danger" })
                 </td>
             </tr>
         }

@@ -17,7 +17,7 @@ using SistemaBoletim.Repositories;
 
 public class AdministradorController : Controller
 {
-    private BoletimOnline2Entities6 db = new BoletimOnline2Entities6();
+    private BoletimOnline2Entities7 db = new BoletimOnline2Entities7();
 
 
     // GET: Administrador
@@ -306,7 +306,7 @@ public class AdministradorController : Controller
             }
             else if (user.PROFESSOR.Count > 0)
             {
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Listagem", "PROFMATERIATURMA");
             };
 
         } else
@@ -357,7 +357,11 @@ public class AdministradorController : Controller
                 {
                     return RedirectToAction("Cadastramentos", "Home");
                 }
-                return RedirectToAction("Index", "Home");
+                if (user.ALUNO.Count > 0)
+                {
+                    return RedirectToAction("Index", "Home");
+                }
+                return RedirectToAction("Listagem", "PROFMATERIATURMA");
             }
         }
         else

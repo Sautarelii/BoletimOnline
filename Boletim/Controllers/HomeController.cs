@@ -12,7 +12,7 @@ namespace Boletim.Controllers
         {
             return View();
         }
-
+        [Authorize(Roles = "Administrador")]
         public ActionResult Cadastramentos()
         {
             return View();         

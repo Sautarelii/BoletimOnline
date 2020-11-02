@@ -3,32 +3,36 @@
 @{
     ViewBag.Title = "Details";
 }
-
+<br />
 <h2>Detalhe</h2>
 
-<div>
-    <h4>ALUNO</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.NOME)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.NOME)
-        </dd>
+    
+        <div>
+            <h4>ALUNO</h4>
+            <hr />
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Usuario.Email)
-        </dt>
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.NOME)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Usuario.Email)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.NOME)
+                </dd>
 
-    </dl>
-</div>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Usuario.Email)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Usuario.Email)
+                </dd>
+
+            </dl>
+        </div>
 <p>
-    @Html.ActionLink("Edit", "EditAluno", new { id = Model.COD_ALUNO }) |
-    @Html.ActionLink("Voltar", "Index")
+    @Html.ActionLink("Edit", "EditAluno", new { id = Model.COD_ALUNO }, new { @class = "btn btn-warning" }) |
+
+    @Html.ActionLink("Voltar", "Index", new { }, new { @class = "btn btn-primary" })
 </p>

@@ -6,10 +6,10 @@
     <html>
     <head>
         <style>
-            .btn-primary {
-                border-radius: 30px;
+            #Pesquisa.btn {
+                border-radius: 40px;
                 box-sizing: border-box;
-                height:30px;
+                height:20px;
             }
         </style>
 
@@ -17,7 +17,7 @@
     </head>
 <br />
     <h2>Atividade</h2>
-
+<br />
     <p>
         @Html.ActionLink("Adicionar Atividade", "Create", new { }, new { @class = "btn btn-success" }) 
     </p>
@@ -26,8 +26,10 @@
       
        @using (Html.BeginForm("Index", "ATIVIDADE", FormMethod.Get))
        {
+       <div id="Pesquisa">
            @Html.TextBox("Pesquisa")
-           <input type="submit" value="Pesquisar" />
+           <input type="submit" value="Pesquisar" class="btn btn-primary" />
+       </div>
        }
    </p>
 
@@ -44,9 +46,7 @@
             <th>
                 @Html.DisplayNameFor(model => model.TIPO_ATIVIDADE)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.MATERIA.NOME)
-            </th>
+           
             <th></th>
         </tr>
 
@@ -80,12 +80,12 @@
                     @tipo
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.MATERIA.NOME)
+                
                 </td>
                 <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.COD_ATIVIDADE }, new { @class = "btn btn-warning" }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.COD_ATIVIDADE }, new { @class = "btn btn-primary" })  |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.COD_ATIVIDADE }, new { @class = "btn btn-danger" })
+                    @Html.ActionLink("Editar", "Edit", new { id = item.COD_ATIVIDADE }, new { @class = "btn btn-warning" }) |
+                    @Html.ActionLink("Detalhar", "Details", new { id = item.COD_ATIVIDADE }, new { @class = "btn btn-primary" })  |
+                    @Html.ActionLink("Deletar", "Delete", new { id = item.COD_ATIVIDADE }, new { @class = "btn btn-danger" })
                 </td>
             </tr>
         }

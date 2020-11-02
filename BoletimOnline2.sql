@@ -49,13 +49,16 @@ CREATE TABLE TURMA(
 
 SELECT * FROM TURMA
 
-CREATE TABLE ALUNO(
+Create TABLE ALUNO  (
 	COD_ALUNO INT IDENTITY(1,1),
 	NOME VARCHAR(100),
-	 UsuarioId int NULL references Usuario(UsuarioId)
+	COD_TURMA INT NULL,
+	 UsuarioId int NULL references Usuario(UsuarioId),
  
-	CONSTRAINT PK_ALUNO PRIMARY KEY (COD_ALUNO)
+	CONSTRAINT PK_ALUNO PRIMARY KEY (COD_ALUNO),
+	CONSTRAINT FK_TURMA FOREIGN KEY (COD_TURMA) REFERENCES TURMA (COD_TURMA)
 )
+
 
 SELECT * FROM ALUNO
 
@@ -120,7 +123,7 @@ insert into  Usuario (Email,HashSenha,FlagSenhaTemp) values ('gabriel@gmail.com'
 insert into Usuario (Email,HashSenha,FlagSenhaTemp) values ('adm@gmail.com','81dc9bdb52d04dc20036dbd8313ed055','S')
 
 
-Insert Administrador (Nome_Administrador,UsuarioId) values ('Prof', 2) 
+Insert Administrador (Nome_Administrador,UsuarioId) values ('Admin', 2) 
 
 
 

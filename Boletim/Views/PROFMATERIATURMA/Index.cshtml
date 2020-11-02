@@ -4,46 +4,50 @@
     ViewBag.Title = "Index";
 }
 <br />
-<h2>Atribuição</h2>
-
+<h2> Listagem de Atribuição</h2>
+<br />
 <p>
     @Html.ActionLink("Adicionar", "Create", new { }, new { @class = "btn btn-success" })
 </p>
+<br />
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.MATERIA.NOME)
+            NOME DA MATERIA
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.PROFESSOR.NOME)
+            NOME DO PROFESSOR
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.TURMA.SERIE)
+            TURMA
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.TURMA.PERIODO_LET)
+            PERIODO 
         </th>
     </tr>
 
 @foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.MATERIA.NOME)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PROFESSOR.NOME)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TURMA.SERIE)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TURMA.PERIODO_LET)
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.MATERIA.NOME)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.PROFESSOR.NOME)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.TURMA.SERIE)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.TURMA.PERIODO_LET)
+    </td>
+    <td>
+    <td>
+        @Html.ActionLink("Editar", "Edit", new { /* id=item.PrimaryKey */ }, new { @class = "btn btn-warning" })
+        @Html.ActionLink("Detalhar", "Details", new { /* id=item.PrimaryKey */ }, new { @class = "btn btn-primary" })
+        @Html.ActionLink("Deletar", "Delete", new { /* id=item.PrimaryKey */ }, new { @class = "btn btn-danger" })
 
-
-            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ }, new { @class = "btn btn-danger" })
-
-        </td>
-    </tr>
+    </td>
+</tr>
 }
 
 </table>

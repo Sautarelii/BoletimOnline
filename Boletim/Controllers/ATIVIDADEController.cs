@@ -12,7 +12,7 @@ namespace Boletim.Controllers
 {
     public class ATIVIDADEController : Controller
     {
-        private BoletimOnline2Entities6 db = new BoletimOnline2Entities6();
+        private BoletimOnline2Entities7 db = new BoletimOnline2Entities7();
 
        
 

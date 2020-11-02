@@ -4,6 +4,7 @@ using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
+using System.Security.Claims;
 using System.Web;
 using System.Web.Mvc;
 using Boletim;
@@ -12,9 +13,23 @@ namespace Boletim.Controllers
 {
     public class PROFMATERIATURMAController : Controller
     {
-        private BoletimOnline2Entities6 db = new BoletimOnline2Entities6();
+        private BoletimOnline2Entities7 db = new BoletimOnline2Entities7();
 
         // GET: PROFMATERIATURMA
+        public ActionResult Listagem()
+        {
+            var user = (ClaimsIdentity)User.Identity;
+            var UsuarioId =
+                Convert.ToInt32(
+                user
+                .Claims
+                .Where(
+                      u => u.Type == ClaimTypes.Sid)
+                .FirstOrDefault()
+                .Value);
+            var pROFMATERIATURMA = db.PROFMATERIATURMA.Include(p => p.MATERIA).Include(p => p.PROFESSOR).Include(p => p.TURMA).Where(p => p.PROFESSOR.UsuarioId == UsuarioId); 
+            return View(pROFMATERIATURMA.ToList());
+        }
         public ActionResult Index()
         {
             var pROFMATERIATURMA = db.PROFMATERIATURMA.Include(p => p.MATERIA).Include(p => p.PROFESSOR).Include(p => p.TURMA);

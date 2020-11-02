@@ -32,12 +32,13 @@
         </p>
         <br/>
         <table class="table">
+
             <tr>
                 <th>
-                    @Html.DisplayNameFor(model => model.Nome_Administrador)
+                    NOME DO ADMINISTRADOR
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Usuario.Email)
+                     EMAIL
                 </th>
                 <th></th>
             </tr>
@@ -54,7 +55,7 @@
                     <td>
                         @Html.ActionLink("Editar", "EditAdmin", new { id = item.Cod_Administrador },new {@class = "btn btn-warning" }) |
                         @Html.ActionLink("Detalhar", "Details", new { id = item.Cod_Administrador }, new { @class = "btn btn-primary" }) |
-                        @Html.ActionLink("Delete", "Delete", new { id = item.Cod_Administrador }, new { @class = "btn btn-danger" })
+                        @Html.ActionLink("Deletar", "Delete", new { id = item.Cod_Administrador }, new { @class = "btn btn-danger" })
                     </td>
                 </tr>
             }
