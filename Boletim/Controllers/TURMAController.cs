@@ -49,16 +49,27 @@ namespace Boletim.Controllers
         // obter mais detalhes, consulte https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "COD_TURMA,SERIE,PERIODO_LET")] TURMA tURMA)
+        public ActionResult Create([Bind(Include = "COD_TURMA,SERIE,PERIODO_LET")] TurmaViewModel turmaViewModel)
         {
             if (ModelState.IsValid)
             {
-                db.TURMA.Add(tURMA);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                if (turmaViewModel.SERIE == null)
+                {
+                    ModelState.AddModelError("SERIE", "O campo Serie deve ser preenchido!");
+                }
+                else if (turmaViewModel.SERIE == null)
+                {
+                    ModelState.AddModelError("PERIODO_LET", "O campo Serie deve ser preenchido!");
+                }
+                else
+                {
+                    TURMA tURMA = new TURMA();
+                    db.TURMA.Add(tURMA);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
             }
-
-            return View(tURMA);
+            return View(turmaViewModel);
         }
 
         // GET: TURMA/Edit/5

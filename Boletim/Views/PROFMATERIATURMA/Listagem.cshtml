@@ -24,21 +24,22 @@
     </tr>
 
 @foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.MATERIA.NOME)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TURMA.SERIE)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TURMA.PERIODO_LET)
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.MATERIA.NOME)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.TURMA.SERIE)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.TURMA.PERIODO_LET)
+    <td>
+    <td>
+        @Html.ActionLink(linkText: " Listar Atividade", actionName: "Index", controllerName: "ATIVIDADE_PROFMT", routeValues: new { CodProf = item.COD_PROF, CodMateria = item.COD_MATERIA, CodTurma = item.COD_TURMA }, htmlAttributes: new { @class = "btn btn-info" })
+        @Html.ActionLink("Deletar", "Delete", new { /* id=item.PrimaryKey */ }, new { @class = "btn btn-danger" })
 
-            @Html.ActionLink(" Listar Atividade", "Index", "ATIVIDADE_PROFMT", new { /* id=item.PrimaryKey */ }, new { @class = "btn btn-info" }) 
-            @Html.ActionLink("Deletar", "Delete", new { /* id=item.PrimaryKey */ }, new { @class = "btn btn-danger" })
-           
-        </td>
-    </tr>
+    </td>
+</tr>
 }
 
 </table>

@@ -4,10 +4,12 @@
     ViewBag.Title = "Index";
 }
 <br />
-<h2>Listagem de Atividade</h2>
+<h2>Listagem de atribuição </h2>
 <br />
+<h3>@ViewBag.Materia.NOME / @ViewBag.Turma.SERIE / @ViewBag.Turma.PERIODO_LET</h3>
+
 <p>
-    @Html.ActionLink("Adicionar Atividade", "Create", new { }, new { @class = "btn btn-success" })
+    @Html.ActionLink("Adicionar ", "Create", new { }, new { @class = "btn btn-success" })
 </p>
 <table class="table">
     <tr>
@@ -15,41 +17,53 @@
             NOME DA ATIVIDADE
         </th>
         <th>
-            NOME DA MATERIA
+            DATA DE ENTREGA
         </th>
         <th>
-            TURMA
-        </th>
-        <th>
-            PERIODO
+           TIPO
         </th>
         <th></th>
     </tr>
 
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.ATIVIDADE.NOME_ATIVIDADE)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.MATERIA.NOME)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TURMA.SERIE)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TURMA.PERIODO_LET)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }, new { @class = "btn btn-warning"  }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }, new { @class = "btn btn-primary" }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ }, new { @class = "btn btn-danger" })
-            </td>
-        </tr>
-    }
+@foreach (var item in Model) {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.ATIVIDADE.NOME_ATIVIDADE)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.ATIVIDADE.DATA_ENTREGA)
+    </td>
+    <td>
+        @{
+            var tipo = "";
+        }
+
+        @if (item.ATIVIDADE.TIPO_ATIVIDADE == 0)
+        {
+            tipo = "DIVERSIFICADA";
+        }
+        else if (item.ATIVIDADE.TIPO_ATIVIDADE == 1)
+        {
+            tipo = "OBRIGATÓRIA";
+        }
+        else if (item.ATIVIDADE.TIPO_ATIVIDADE == 2)
+        {
+            tipo = "ATITUDINAL";
+        }
+
+        @tipo
+    </td>
+
+    <td>
+        @Html.ActionLink("Editar", "Edit", new { /* id=item.PrimaryKey */ }, new { @class = "btn btn-warning" }) |
+        @Html.ActionLink("Detalhar", "Details", new { /* id=item.PrimaryKey */ }, new { @class = "btn btn-primary" }) |
+        @Html.ActionLink("Deletar", "Delete", new { /* id=item.PrimaryKey */ }, new { @class = "btn btn-danger" })
+    </td>
+
+</tr>
+}
 
 </table>
-
-    @Html.ActionLink("Voltar", "Listagem", "PROFMATERIATURMA", new {@class= "glyphicon glyphicon-pencil" }, new { @class = "btn btn-primary " })
-     
+<div>
+    @Html.ActionLink("Voltar", "Listagem","PROFMATERIATURMA", new { }, new { @class = "btn btn-primary" })
+</div>

@@ -27,7 +27,13 @@ namespace Boletim.Controllers
                       u => u.Type == ClaimTypes.Sid)
                 .FirstOrDefault()
                 .Value);
-            var pROFMATERIATURMA = db.PROFMATERIATURMA.Include(p => p.MATERIA).Include(p => p.PROFESSOR).Include(p => p.TURMA).Where(p => p.PROFESSOR.UsuarioId == UsuarioId); 
+            var pROFMATERIATURMA = 
+                db.PROFMATERIATURMA
+                .Include(p => p.MATERIA)
+                .Include(p => p.PROFESSOR)
+                .Include(p => p.TURMA)
+                .Where(p => p.PROFESSOR.UsuarioId == UsuarioId);
+            
             return View(pROFMATERIATURMA.ToList());
         }
         public ActionResult Index()

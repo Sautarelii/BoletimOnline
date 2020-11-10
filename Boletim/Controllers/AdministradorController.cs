@@ -267,6 +267,10 @@ public class AdministradorController : Controller
         ViewBag.UsuarioId = UsuarioId;
         return View();
     }
+    public ActionResult EsqueceuSenha()
+    { 
+        return View();
+    }
 
     //[Authorize(Roles ="SenhaTemporaria")]
     [AllowAnonymous]
@@ -366,6 +370,7 @@ public class AdministradorController : Controller
         }
         else
         {
+            ModelState.AddModelError("Senha", "A Senha não confere");
             ModelState.AddModelError(string.Empty, "E-mail ou senha inválidos");
             return View(loginModel);
         }

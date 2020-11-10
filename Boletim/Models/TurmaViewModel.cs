@@ -12,10 +12,10 @@ namespace Boletim.Models
 
         [Key]
         [HiddenInput(DisplayValue = false)]
-        public int TurmaId { get; set; }
+        public int COD_TURMA { get; set; }
         [Required(ErrorMessage = "Informe a Turma")]
         [StringLength(100)]
-        [System.Web.Mvc.Remote("VerificaTurma", "TURMA", ErrorMessage = "Turma já cadastrada")]
+        [Remote("VerificaSeEmailJaExiste", "TURMA", ErrorMessage = "E-mail já utilizado")]
         public int SERIE { get; set; }
         [Required(ErrorMessage = "Informe o periodo letivo")]
         [StringLength(100)]

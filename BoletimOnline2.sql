@@ -125,8 +125,13 @@ insert into Usuario (Email,HashSenha,FlagSenhaTemp) values ('adm@gmail.com','81d
 
 Insert Administrador (Nome_Administrador,UsuarioId) values ('Admin', 2) 
 
+Insert into  ATIVIDADE(NOME_ATIVIDADE,DATA_ENTREGA,TIPO_ATIVIDADE,COD_MATERIA) values ('EXERCICIO-2','06/11/2020',1,'1')
 
+Insert into  ATIVIDADE_PROFMT (COD_ATIVIDADE,COD_PROF,COD_MATERIA,COD_TURMA,PERIODO_LETIVO) values ('5','1','1','1','20202')
 
+SELECT * FROM ATIVIDADE_PROFMT
+
+SELECT * FROM ATIVIDADE
 
 Select * from ALUNO_ATIVIDADE 
 

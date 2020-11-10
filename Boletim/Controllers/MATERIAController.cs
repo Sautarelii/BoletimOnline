@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Boletim;
+using Boletim.Models;
 
 namespace Boletim.Controllers
 {
@@ -46,16 +47,24 @@ namespace Boletim.Controllers
         // obter mais detalhes, consulte https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "COD_MATERIA,NOME")] MATERIA mATERIA)
+        public ActionResult Create([Bind(Include = "COD_MATERIA,NOME")] MateriaViewModel materiaViewModel)
         {
             if (ModelState.IsValid)
             {
-                db.MATERIA.Add(mATERIA);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                if (materiaViewModel.NOME == null)
+                {
+                    ModelState.AddModelError("NOME", "O campo Materia deve ser preenchido!");
+                }
+                else
+                {
+                    MATERIA mATERIA = new MATERIA();
+                    db.MATERIA.Add(mATERIA);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
             }
 
-            return View(mATERIA);
+            return View(materiaViewModel);
         }
 
         // GET: MATERIA/Edit/5

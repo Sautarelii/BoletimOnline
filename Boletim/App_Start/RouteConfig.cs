@@ -15,8 +15,8 @@ namespace Boletim
 
             routes.MapRoute(
                name: "Default",
-               url: "ATIVIDADE_PROFMT/{action}/{AtividadeId}/{CodProf}/{CodMateria}/{CodTurma}/{CodPeriodo}",
-               defaults: new {  action = "Index" }
+               url: "ATIVIDADE_PROFMT/{action}/{CodProf}/{CodMateria}/{CodTurma}",
+               defaults: new { controller = "ATIVIDADE_PROFMT", action = "Index" }
            );
 
             routes.MapRoute(

@@ -8,6 +8,7 @@ using System.Security.Claims;
 using System.Web;
 using System.Web.Mvc;
 using Boletim;
+using Boletim.Models;
 
 namespace Boletim.Controllers
 {
@@ -16,9 +17,16 @@ namespace Boletim.Controllers
         private BoletimOnline2Entities7 db = new BoletimOnline2Entities7();
 
         // GET: ATIVIDADE_PROFMT
-
-        public ActionResult Index()
+        public ActionResult Index(int CodProf, int CodMateria,int CodTurma)
         {
+            var Materia = db.MATERIA.Where(m => m.COD_MATERIA == CodMateria).FirstOrDefault();
+
+            ViewBag.Materia = Materia;
+            var Professor = db.PROFESSOR.Where(m => m.COD_PROF == CodProf).FirstOrDefault();
+            ViewBag.Professor = Professor;
+            var Turma = db.TURMA.Where(m => m.COD_TURMA == CodTurma).FirstOrDefault();
+            ViewBag.Turma = Turma;
+
             var user = (ClaimsIdentity)User.Identity;
             var UsuarioId =
                 Convert.ToInt32(
@@ -28,7 +36,26 @@ namespace Boletim.Controllers
                       u => u.Type == ClaimTypes.Sid)
                 .FirstOrDefault()
                 .Value);
-            var aTIVIDADE_PROFMT = db.ATIVIDADE_PROFMT.Include(a => a.ATIVIDADE).Include(a => a.MATERIA).Include(a => a.PROFESSOR).Include(a => a.TURMA).Where(p => p.PROFESSOR.UsuarioId == UsuarioId); ;
+            var aTIVIDADE_PROFMT =
+                db.ATIVIDADE_PROFMT
+                    .Include(a => a.ATIVIDADE)
+                    .Include(a => a.MATERIA)
+                    .Include(a => a.PROFESSOR)
+                    .Include(a => a.TURMA)
+                    .Where(a => a.PROFESSOR.COD_PROF == CodProf)
+                    .Where(a => a.MATERIA.COD_MATERIA == CodMateria)
+                    .Where(a => a.TURMA.COD_TURMA == CodTurma);
+               
+
+            //var aTIVIDADE_PROFMT = 
+            //    db.ATIVIDADE_PROFMT
+            //        .Include(a => a.ATIVIDADE)
+            //        .Include(a => a.MATERIA)
+            //        .Include(a => a.PROFESSOR)
+            //        .Include(a => a.TURMA)
+            //        .Where(a => a.PROFESSOR.UsuarioId == UsuarioId);
+            //  var  _PROFMATERIATURMA =
+            //     db.
             return View(aTIVIDADE_PROFMT.ToList());
         }
 
@@ -62,20 +89,57 @@ namespace Boletim.Controllers
         // obter mais detalhes, consulte https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "COD_ATIVIDADE,COD_PROF,COD_MATERIA,COD_TURMA,PERIODO_LETIVO")] ATIVIDADE_PROFMT aTIVIDADE_PROFMT)
+        public ActionResult Create([Bind(Include = "COD_ATIVIDADE,NOME_ATIVIDADE,DATA_ENTREGA,TIPO_ATIVIDADE,COD_MATERIA,COD_TURMA,PERIODO_LETIVO")]  Atividade_ProfmtViewModel atividade_ProfmtViewModel)
         {
             if (ModelState.IsValid)
             {
+                //CRIAR OBJETO ATIVIDADE 
+                ATIVIDADE atividade = new ATIVIDADE();
+                //INSERIR O PROXIMO DADOS 
+                atividade.NOME_ATIVIDADE  = atividade_ProfmtViewModel.NOME_ATIVIDADE;
+                atividade.DATA_ENTREGA = atividade_ProfmtViewModel.DATA_ENTREGA;
+                atividade.TIPO_ATIVIDADE = atividade_ProfmtViewModel.TIPO_ATIVIDADE;
+                atividade.COD_MATERIA = atividade_ProfmtViewModel.COD_MATERIA;
+
+
+                db.ATIVIDADE.Add(atividade);
+                db.SaveChanges();
+               
+                ATIVIDADE_PROFMT aTIVIDADE_PROFMT = new ATIVIDADE_PROFMT();
+                aTIVIDADE_PROFMT.COD_ATIVIDADE = db.ATIVIDADE.Max(row => row.COD_ATIVIDADE);
+                aTIVIDADE_PROFMT.COD_MATERIA = atividade_ProfmtViewModel.COD_MATERIA;
+                aTIVIDADE_PROFMT.COD_TURMA = atividade_ProfmtViewModel.COD_TURMA;
+                aTIVIDADE_PROFMT.PERIODO_LETIVO = atividade_ProfmtViewModel.PERIODO_LETIVO;
+
+
+                var user = (ClaimsIdentity)User.Identity;
+                var UsuarioId =
+                    Convert.ToInt32(
+                    user
+                    .Claims
+                    .Where(
+                          u => u.Type == ClaimTypes.Sid)
+                    .FirstOrDefault()
+                    .Value);
+               
+
+              
+                var PROFESSOR =
+                    db.PROFESSOR
+                    .Where(a => a.UsuarioId == UsuarioId).FirstOrDefault();
+                aTIVIDADE_PROFMT.COD_PROF = PROFESSOR.COD_PROF;
                 db.ATIVIDADE_PROFMT.Add(aTIVIDADE_PROFMT);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                String link = "Index/" + PROFESSOR.COD_PROF + "/" + atividade_ProfmtViewModel.COD_MATERIA + "/" + atividade_ProfmtViewModel.COD_TURMA;
+                return RedirectToAction(link);
             }
 
-            ViewBag.COD_ATIVIDADE = new SelectList(db.ATIVIDADE, "COD_ATIVIDADE", "NOME_ATIVIDADE", aTIVIDADE_PROFMT.COD_ATIVIDADE);
-            ViewBag.COD_MATERIA = new SelectList(db.MATERIA, "COD_MATERIA", "NOME", aTIVIDADE_PROFMT.COD_MATERIA);
-            ViewBag.COD_PROF = new SelectList(db.PROFESSOR, "COD_PROF", "NOME", aTIVIDADE_PROFMT.COD_PROF);
-            ViewBag.COD_TURMA = new SelectList(db.TURMA, "COD_TURMA", "SERIE", aTIVIDADE_PROFMT.COD_TURMA);
-            return View(aTIVIDADE_PROFMT);
+            ViewBag.COD_ATIVIDADE = new SelectList(db.ATIVIDADE, "NOME_ATIVIDADE", "NOME_ATIVIDADE", atividade_ProfmtViewModel.NOME_ATIVIDADE);
+            ViewBag.COD_ATIVIDADE = new SelectList(db.ATIVIDADE, "DATA_ENTREGA", "DATA_ENTREGA", atividade_ProfmtViewModel.DATA_ENTREGA);
+            ViewBag.COD_ATIVIDADE = new SelectList(db.ATIVIDADE, "TIPO_ATIVIDADE", "TIPO_ATIVIDADE", atividade_ProfmtViewModel.TIPO_ATIVIDADE);
+            ViewBag.COD_MATERIA = new SelectList(db.MATERIA, "COD_MATERIA", "NOME", atividade_ProfmtViewModel.COD_MATERIA);
+            ViewBag.COD_TURMA = new SelectList(db.TURMA, "COD_TURMA", "SERIE", atividade_ProfmtViewModel.COD_TURMA);
+            return View(atividade_ProfmtViewModel);
         }
 
         // GET: ATIVIDADE_PROFMT/Edit/5
